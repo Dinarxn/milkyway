@@ -7,6 +7,19 @@
 
 import * as THREE from 'three';
 import { PLANETS_DATA, type PlanetData } from '../data/solarSystemData.js';
+import {
+  getSunTexture,
+  getMercuryTexture,
+  getVenusTexture,
+  getEarthTexture,
+  getMarsTexture,
+  getJupiterTexture,
+  getSaturnTexture,
+  getSaturnRingTexture,
+  getUranusTexture,
+  getNeptuneTexture,
+  getPlutoTexture
+} from '../data/planetTextures.js';
 
 export interface PlanetMeshObject {
   data: PlanetData;
@@ -114,30 +127,35 @@ export class SolarSystem {
    * 1. The Sun with radiant solar corona shader
    */
   private createSun(): void {
-    const sunGeo = new THREE.SphereGeometry(12.0, 32, 32);
+    // Calibrated Sun core radius (5.5 units) so it illuminates rather than drowns inner planets
+    const sunGeo = new THREE.SphereGeometry(5.5, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({
-      color: 0xfffbeb,
-      wireframe: false
+      map: getSunTexture(),
+      color: 0xfff7ed
     });
     this.sunMesh = new THREE.Mesh(sunGeo, sunMat);
     this.sunMesh.name = 'sun-core';
 
-    // Solar Corona Glow
-    const coronaGeo = new THREE.SphereGeometry(15.5, 32, 32);
+    // Solar Corona Glow Atmosphere
+    const coronaGeo = new THREE.SphereGeometry(6.6, 32, 32);
     const coronaMat = new THREE.MeshBasicMaterial({
       color: 0xf59e0b,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.28,
       side: THREE.BackSide,
       blending: THREE.AdditiveBlending
     });
     const corona = new THREE.Mesh(coronaGeo, coronaMat);
     this.sunMesh.add(corona);
 
-    // Sun Point Light Illuminating Planets
-    this.sunLight = new THREE.PointLight(0xfffaed, 2.5, 1200, 0.5);
+    // Warm Solar Point Light Illuminating Planets (Inverse Square Falloff)
+    this.sunLight = new THREE.PointLight(0xfffaed, 2.8, 1500, 0.45);
     this.sunLight.position.set(0, 0, 0);
     this.group.add(this.sunLight);
+
+    // Cosmic Ambient Fill Light so night hemispheres have soft starlight visibility
+    const ambientLight = new THREE.AmbientLight(0x384158, 0.75);
+    this.group.add(ambientLight);
 
     this.group.add(this.sunMesh);
   }
@@ -146,16 +164,31 @@ export class SolarSystem {
    * 2. The 8 Major Planets + Earth/Moon + Saturn's Rings
    */
   private createPlanets(): void {
+    const planetTextureMap: Record<string, () => THREE.CanvasTexture> = {
+      mercury: getMercuryTexture,
+      venus: getVenusTexture,
+      earth: getEarthTexture,
+      mars: getMarsTexture,
+      jupiter: getJupiterTexture,
+      saturn: getSaturnTexture,
+      uranus: getUranusTexture,
+      neptune: getNeptuneTexture,
+      pluto: getPlutoTexture
+    };
+
     for (const data of PLANETS_DATA) {
       const planetGroup = new THREE.Group();
       planetGroup.name = `planet-${data.id}`;
 
-      // Planet Sphere
+      // Planet Sphere with authentic procedural NASA surface texture
       const sphereGeo = new THREE.SphereGeometry(data.renderRadius, 32, 32);
+      const textureFn = planetTextureMap[data.id];
+      const planetTexture = textureFn ? textureFn() : null;
+
       const sphereMat = new THREE.MeshStandardMaterial({
-        color: data.color,
-        roughness: 0.7,
-        metalness: 0.1
+        map: planetTexture,
+        roughness: 0.65,
+        metalness: 0.05
       });
       const planetMesh = new THREE.Mesh(sphereGeo, sphereMat);
       planetMesh.name = `mesh-${data.id}`;
@@ -163,32 +196,48 @@ export class SolarSystem {
       planetMesh.rotation.z = (data.axialTiltDeg * Math.PI) / 180.0;
       planetGroup.add(planetMesh);
 
-      // Earth's Moon
+      // Earth Atmospheric Rayleigh Blue Rim & Moon
       let moonGroup: THREE.Group | undefined;
       let moonMesh: THREE.Mesh | undefined;
       if (data.id === 'earth') {
+        // Atmospheric Rayleigh scattering shell
+        const atmosGeo = new THREE.SphereGeometry(data.renderRadius * 1.04, 32, 32);
+        const atmosMat = new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          transparent: true,
+          opacity: 0.22,
+          blending: THREE.AdditiveBlending,
+          side: THREE.BackSide
+        });
+        planetGroup.add(new THREE.Mesh(atmosGeo, atmosMat));
+
+        // Luna (Earth's Moon)
         moonGroup = new THREE.Group();
         moonGroup.name = 'earth-moon-group';
-        const moonGeo = new THREE.SphereGeometry(0.8, 16, 16);
-        const moonMat = new THREE.MeshStandardMaterial({ color: 0xd6d3d1, roughness: 0.9 });
+        const moonGeo = new THREE.SphereGeometry(0.85, 16, 16);
+        const moonMat = new THREE.MeshStandardMaterial({
+          map: getMercuryTexture(), // Cratered regolith appearance
+          roughness: 0.85
+        });
         moonMesh = new THREE.Mesh(moonGeo, moonMat);
-        moonMesh.position.set(7.0, 0, 0);
+        moonMesh.position.set(7.5, 0, 0);
         moonGroup.add(moonMesh);
         planetGroup.add(moonGroup);
       }
 
-      // Saturn's Ring System
+      // Saturn's Ring System with Cassini Division & Multi-ring Alpha
       let ringMesh: THREE.Mesh | undefined;
       if (data.hasRings) {
-        const innerR = data.renderRadius * 1.4;
-        const outerR = data.renderRadius * 2.8;
+        const innerR = data.renderRadius * 1.35;
+        const outerR = data.renderRadius * 2.85;
         const ringGeo = new THREE.RingGeometry(innerR, outerR, 64);
         ringGeo.rotateX(Math.PI / 2);
+
         const ringMat = new THREE.MeshBasicMaterial({
-          color: 0xe2d9b6,
+          map: getSaturnRingTexture(),
           side: THREE.DoubleSide,
           transparent: true,
-          opacity: 0.78,
+          opacity: 0.88,
           depthWrite: false
         });
         ringMesh = new THREE.Mesh(ringGeo, ringMat);
@@ -196,7 +245,7 @@ export class SolarSystem {
         planetGroup.add(ringMesh);
       }
 
-      // Keplerian Orbit Trajectory Line (Smooth 128-point ellipse)
+      // Keplerian Orbit Trajectory Line (Delicate, anti-aliased semi-transparent loop)
       const orbitLine = this.generateOrbitLine(data);
       this.group.add(orbitLine);
 
@@ -235,7 +284,7 @@ export class SolarSystem {
     const lineMat = new THREE.LineBasicMaterial({
       color: data.color,
       transparent: true,
-      opacity: 0.22,
+      opacity: 0.16,
       blending: THREE.AdditiveBlending
     });
 

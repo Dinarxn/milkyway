@@ -43,13 +43,15 @@ void main() {
     gl_Position = projectionMatrix * mvPosition;
 
     // 3. Distance Attenuation for Point Sizing
-    // Formula: uPixelRatio * aSize * (uSizeScale / -mvPosition.z) * pow(-mvPosition.z, 0.28)
-    // Clamped strictly to [1.0, 48.0] to protect GPU rasterizer fill-rate
+    // Adaptive macro-to-micro scaling: maintains soft, visible stellar disks (2.5 - 7.0 px)
+    // at galactic macro overview (100,000 ly) while scaling smoothly during local zoom
     float viewDist = max(-mvPosition.z, 1.0);
     vViewDist = viewDist;
 
-    float calculatedSize = uPixelRatio * aSize * (uSizeScale / viewDist) * pow(viewDist, 0.28);
-    gl_PointSize = clamp(calculatedSize, 1.0, 48.0);
+    float macroBase = 2.5;
+    float adaptiveFactor = (uSizeScale / (viewDist + 15000.0)) * 5.5;
+    float calculatedSize = uPixelRatio * aSize * (macroBase + adaptiveFactor);
+    gl_PointSize = clamp(calculatedSize, 1.5, 48.0);
 }
 `;
 

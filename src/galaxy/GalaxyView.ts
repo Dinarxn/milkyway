@@ -36,8 +36,8 @@ export class GalaxyView extends THREE.Group {
     const uniforms: StarShaderUniforms = {
       uTime: { value: 0.0 },
       uPixelRatio: { value: pixelRatio },
-      uSizeScale: { value: 350.0 },
-      uCoreBloom: { value: 1.25 }
+      uSizeScale: { value: 650.0 },
+      uCoreBloom: { value: 1.45 }
     };
 
     // 3. Configure custom ShaderMaterial with AdditiveBlending and depthWrite disabled

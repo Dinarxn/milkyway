@@ -70,27 +70,34 @@ void main() {
     // Composite profile: 75% core brilliance + 35% ethereal halo
     float intensity = 0.75 * core + 0.35 * halo;
 
-    // 3. Planck Blackbody Chromaticity
-    vec3 starColor = kelvinToRGB(vTemperature);
+    // 3. Planck Blackbody & NASA Multi-wavelength Chromaticity
+    vec3 baseColor = kelvinToRGB(vTemperature);
 
-    // Desaturate intense cores of high-temperature stars (O/B type) to brilliant white
-    if (vTemperature > 10000.0) {
-        starColor = mix(starColor, vec3(1.0, 1.0, 1.0), core * 0.7);
-    } else if (vTemperature < 4500.0) {
-        // Red dwarfs / giants have warm amber-tinted halos
-        starColor = mix(starColor, vec3(1.0, 0.85, 0.5), core * 0.4);
+    // Arm stars (vArm in [0.0, 4.0]): Young Population I OB Associations
+    // In NASA Spitzer reference image: Vibrant electric cerulean-blue and cyan starlight
+    if (vArm >= 0.0 && vArm <= 4.0) {
+        baseColor = mix(baseColor, vec3(0.28, 0.70, 1.0), 0.65);
     }
+    // Bar and Bulge stars (vArm in [5.0, 7.0]): Old Population II, K/M giants
+    // In NASA Spitzer reference image: Warm golden-amber, honey, and champagne yellow
+    else if (vArm >= 5.0 && vArm <= 7.0) {
+        baseColor = mix(baseColor, vec3(1.0, 0.82, 0.38), 0.78);
+    }
+
+    // Only desaturate the tiny central diffraction spike (inner 10% radius)
+    float whiteCenter = smoothstep(0.10, 0.0, dist);
+    vec3 starColor = mix(baseColor, vec3(1.0, 1.0, 1.0), whiteCenter * 0.50);
 
     // 4. Bulge and Core Bloom Enhancement
     // Bar stars (id=5), Bulge stars (id=6), and Nuclear Core stars (id=7) receive bloom multiplier
     float bloomBoost = 1.0;
     if (vArm >= 5.0 && vArm <= 7.0) {
-        bloomBoost = uCoreBloom;
+        bloomBoost = uCoreBloom * 1.35;
     }
 
     // 5. Final Output for Additive Blending
     vec3 finalRGB = starColor * intensity * bloomBoost;
-    float finalAlpha = intensity * clamp(bloomBoost, 0.5, 1.5);
+    float finalAlpha = intensity * clamp(bloomBoost, 0.5, 2.0);
 
     gl_FragColor = vec4(finalRGB, finalAlpha);
 }

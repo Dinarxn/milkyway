@@ -13,6 +13,7 @@ import { SUN_GC_DISTANCE_LY, SUN_MIDPLANE_Z_LY } from './data/coordinates.js';
 import type { Landmark } from './types/galaxy.js';
 import { GalaxyGenerator } from './galaxy/GalaxyGenerator.js';
 import { GalaxyView } from './galaxy/GalaxyView.js';
+import { GalaxyNebulaClouds } from './objects/GalaxyNebulaClouds.js';
 import { SagittariusA } from './objects/SagittariusA.js';
 import { LandmarkMarkers } from './objects/LandmarkMarkers.js';
 import { NasaScienceLayers } from './objects/NasaScienceLayers.js';
@@ -39,6 +40,7 @@ let renderer: THREE.WebGLRenderer | null = null;
 let controls: OrbitControls | null = null;
 let cameraFlyTo: CameraFlyTo | null = null;
 let galaxyView: GalaxyView | null = null;
+let galaxyNebulaClouds: GalaxyNebulaClouds | null = null;
 let sagittariusA: SagittariusA | null = null;
 let landmarkMarkers: LandmarkMarkers | null = null;
 let nasaScienceLayers: NasaScienceLayers | null = null;
@@ -120,6 +122,10 @@ function initThreeScene(canvas: HTMLCanvasElement): void {
   const particleBuffer = GalaxyGenerator.generate(250000);
   galaxyView = new GalaxyView(particleBuffer);
   scene.add(galaxyView);
+
+  // 7b. Mount Volumetric Interstellar Gas & H II Emission Nebulae Clouds (NASA Spitzer Model)
+  galaxyNebulaClouds = new GalaxyNebulaClouds();
+  scene.add(galaxyNebulaClouds);
 
   // 8. Mount Sagittarius A* Relativistic Subsystem at origin (0, 0, 0) (F11-F13)
   sagittariusA = new SagittariusA();
@@ -296,6 +302,7 @@ function initThreeScene(canvas: HTMLCanvasElement): void {
     landmarkMarkers,
     nasaScienceLayers,
     solarSystem,
+    galaxyNebulaClouds,
     selectLandmark: (id: string) => selectLandmark(id),
     resetToOverview
   };
@@ -362,6 +369,10 @@ function initThreeScene(canvas: HTMLCanvasElement): void {
       galaxyView.update(delta, elapsedTime);
     }
 
+    if (galaxyNebulaClouds) {
+      galaxyNebulaClouds.update(elapsedTime);
+    }
+
     if (sagittariusA) {
       sagittariusA.update(delta, elapsedTime, camera);
     }
@@ -410,6 +421,7 @@ export {
   controls,
   cameraFlyTo,
   galaxyView,
+  galaxyNebulaClouds,
   sagittariusA,
   landmarkMarkers,
   nasaScienceLayers,

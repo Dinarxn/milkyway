@@ -1,0 +1,31 @@
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './tests/e2e',
+  timeout: 60000,
+  workers: 1,
+  webServer: {
+    command: 'npm run dev',
+    port: 3000,
+    reuseExistingServer: !process.env.CI
+  },
+  use: {
+    baseURL: 'http://localhost:3000',
+    headless: true,
+    viewport: { width: 1280, height: 720 },
+    launchOptions: {
+      args: [
+        '--enable-webgl',
+        '--ignore-gpu-blocklist',
+        '--use-gl=angle',
+        '--use-angle=swiftshader'
+      ]
+    }
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] }
+    }
+  ]
+});

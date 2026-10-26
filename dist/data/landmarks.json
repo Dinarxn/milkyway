@@ -1,0 +1,437 @@
+[
+  {
+    "id": "sagittarius-a",
+    "name": "Sagittarius A*",
+    "commonName": "Galactic Center Supermassive Black Hole",
+    "constellation": "Sagittarius",
+    "category": "supermassive_black_hole",
+    "equatorial": {
+      "ra": "17h 45m 40.04s",
+      "dec": "-29° 00' 28.1\"",
+      "raDeg": 266.416837,
+      "decDeg": -29.007810,
+      "distanceLy": 26000
+    },
+    "galactic": {
+      "lDeg": 359.9442,
+      "bDeg": -0.0462,
+      "distanceLy": 26000
+    },
+    "cartesian": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "threePosition": [0.0, 0.0, 0.0],
+    "distanceFromGC": 0,
+    "distanceFromSun": 26000,
+    "spectralType": "SMBH",
+    "temperatureK": 100000,
+    "apparentMagnitude": 15.0,
+    "absoluteMagnitude": null,
+    "description": "Sagittarius A* is the supermassive black hole anchoring the dynamical center of the Milky Way, possessing a mass of approximately 4.15 million solar masses. It features a glowing relativistic accretion flow, an event horizon shadow observed by the Event Horizon Telescope, and intense gravitational light bending surrounded by the dense nuclear stellar cluster.",
+    "cameraDistance": 250,
+    "cameraOffset": [0.0, 80.0, 220.0],
+    "scientificDetails": {
+      "massSolarMasses": 4154000,
+      "schwarzschildRadiusKm": 12300000,
+      "discoveryYear": 1974,
+      "observationalMilestone": "EHT direct event horizon shadow imaging (2022)"
+    }
+  },
+  {
+    "id": "sun",
+    "name": "The Sun",
+    "commonName": "Solar System / Sol",
+    "constellation": "N/A (Local Orion Spur)",
+    "category": "star_system",
+    "equatorial": {
+      "ra": "00h 00m 00.0s",
+      "dec": "+00° 00' 00.0\"",
+      "raDeg": 0.0,
+      "decDeg": 0.0,
+      "distanceLy": 0
+    },
+    "galactic": {
+      "lDeg": 0.0,
+      "bDeg": 0.0,
+      "distanceLy": 0
+    },
+    "cartesian": {
+      "x": 0.0,
+      "y": 68.0,
+      "z": 26000.0
+    },
+    "threePosition": [0.0, 68.0, 26000.0],
+    "distanceFromGC": 26000,
+    "distanceFromSun": 0,
+    "spectralType": "G2V",
+    "temperatureK": 5778,
+    "apparentMagnitude": -26.74,
+    "absoluteMagnitude": 4.83,
+    "description": "The Sun is a G-type main-sequence yellow dwarf star situated in the local Orion Spur between the Sagittarius and Perseus spiral arms, roughly 26,000 light-years from Sagittarius A*. It anchors the Solar System, home to humanity, and serves as the fundamental photometric reference point for stellar astrophysics.",
+    "cameraDistance": 150,
+    "cameraOffset": [30.0, 60.0, 120.0],
+    "scientificDetails": {
+      "massSolarMasses": 1.0,
+      "metallicityFeH": 0.0,
+      "galacticOrbitalPeriodMyr": 230,
+      "elevationAboveMidplaneLy": 68
+    }
+  },
+  {
+    "id": "pleiades",
+    "name": "Pleiades",
+    "commonName": "Messier 45 / Seven Sisters",
+    "constellation": "Taurus",
+    "category": "open_cluster",
+    "equatorial": {
+      "ra": "03h 47m 24.0s",
+      "dec": "+24° 07' 00\"",
+      "raDeg": 56.850,
+      "decDeg": 24.1167,
+      "distanceLy": 444
+    },
+    "galactic": {
+      "lDeg": 166.57,
+      "bDeg": -23.52,
+      "distanceLy": 444
+    },
+    "cartesian": {
+      "x": -94.6,
+      "y": -109.2,
+      "z": 26396.0
+    },
+    "threePosition": [-94.6, -109.2, 26396.0],
+    "distanceFromGC": 26396,
+    "distanceFromSun": 444,
+    "spectralType": "B7IIIe",
+    "temperatureK": 12300,
+    "apparentMagnitude": 1.6,
+    "absoluteMagnitude": -2.8,
+    "description": "The Pleiades is a young open star cluster of over 1,000 stars dominated by luminous hot blue B-type subgiants including Alcyone, Atlas, and Electra. Formed roughly 100 million years ago, the cluster is currently passing through an interstellar dust cloud that scatters blue starlight, producing its famous reflection nebulae.",
+    "cameraDistance": 300,
+    "cameraOffset": [40.0, 70.0, 200.0],
+    "scientificDetails": {
+      "clusterAgeMyr": 100,
+      "parallaxMas": 7.34,
+      "brightestStar": "Alcyone (Eta Tauri, B7IIIe)",
+      "reflectionNebula": "NGC 1435 (Merope Nebula)"
+    }
+  },
+  {
+    "id": "orion-nebula",
+    "name": "Orion Nebula",
+    "commonName": "Messier 42 / NGC 1976",
+    "constellation": "Orion",
+    "category": "emission_nebula",
+    "equatorial": {
+      "ra": "05h 35m 17.3s",
+      "dec": "-05° 23' 28\"",
+      "raDeg": 83.8221,
+      "decDeg": -5.3911,
+      "distanceLy": 1344
+    },
+    "galactic": {
+      "lDeg": 209.01,
+      "bDeg": -19.38,
+      "distanceLy": 1344
+    },
+    "cartesian": {
+      "x": 614.9,
+      "y": -377.9,
+      "z": 27108.7
+    },
+    "threePosition": [614.9, -377.9, 27108.7],
+    "distanceFromGC": 27118,
+    "distanceFromSun": 1344,
+    "spectralType": "O7Vp",
+    "temperatureK": 39000,
+    "apparentMagnitude": 4.0,
+    "absoluteMagnitude": -4.1,
+    "description": "The Orion Nebula is an active diffuse H II stellar nursery located approximately 1,344 light-years from Earth. Ionized by the high-energy ultraviolet radiation of the central Trapezium Cluster (Theta-1 Orionis C, spectral type O7Vp), it showcases turbulent ionization shock fronts, protoplanetary disks (proplyds), and glowing hydrogen gas.",
+    "cameraDistance": 450,
+    "cameraOffset": [60.0, 80.0, 250.0],
+    "scientificDetails": {
+      "physicalDiameterLy": 24,
+      "parallaxMas": 2.43,
+      "coreIonizingCluster": "Trapezium Cluster (Theta-1 Orionis)",
+      "dominantEmissionLines": "H-alpha (656.3 nm), [O III] (500.7 nm)"
+    }
+  },
+  {
+    "id": "eta-carinae",
+    "name": "Eta Carinae",
+    "commonName": "Eta Carinae & Homunculus Nebula",
+    "constellation": "Carina",
+    "category": "stellar_system",
+    "equatorial": {
+      "ra": "10h 45m 03.6s",
+      "dec": "-59° 41' 04\"",
+      "raDeg": 161.26496,
+      "decDeg": -59.68452,
+      "distanceLy": 7500
+    },
+    "galactic": {
+      "lDeg": 287.60,
+      "bDeg": -0.63,
+      "distanceLy": 7500
+    },
+    "cartesian": {
+      "x": 7148.6,
+      "y": -14.5,
+      "z": 23732.1
+    },
+    "threePosition": [7148.6, -14.5, 23732.1],
+    "distanceFromGC": 24785,
+    "distanceFromSun": 7500,
+    "spectralType": "LBV+O",
+    "temperatureK": 15000,
+    "apparentMagnitude": 4.3,
+    "absoluteMagnitude": -8.6,
+    "description": "Eta Carinae is an unstable hypergiant binary system containing a Luminous Blue Variable of over 100 solar masses producing millions of times the Sun's luminosity. Following its Great Eruption in 1843, it ejected the expanding bipolar Homunculus dust nebula and is among the galaxy's most immediate supernova/hypernova candidates.",
+    "cameraDistance": 600,
+    "cameraOffset": [80.0, 90.0, 320.0],
+    "scientificDetails": {
+      "primaryMassSolar": 100,
+      "luminositySolar": 4500000,
+      "orbitalPeriodYears": 5.54,
+      "supernovaProgenitor": "Pair-instability / Core-collapse Hypernova"
+    }
+  },
+  {
+    "id": "crab-nebula",
+    "name": "Crab Nebula",
+    "commonName": "Messier 1 / SN 1054 Remnant",
+    "constellation": "Taurus",
+    "category": "supernova_remnant",
+    "equatorial": {
+      "ra": "05h 34m 31.9s",
+      "dec": "+22° 00' 52\"",
+      "raDeg": 83.63308,
+      "decDeg": 22.01450,
+      "distanceLy": 6500
+    },
+    "galactic": {
+      "lDeg": 184.56,
+      "bDeg": -5.78,
+      "distanceLy": 6500
+    },
+    "cartesian": {
+      "x": 514.1,
+      "y": -586.6,
+      "z": 32446.2
+    },
+    "threePosition": [514.1, -586.6, 32446.2],
+    "distanceFromGC": 32455,
+    "distanceFromSun": 6500,
+    "spectralType": "PWN",
+    "temperatureK": 100000,
+    "apparentMagnitude": 8.4,
+    "absoluteMagnitude": -3.1,
+    "description": "The Crab Nebula is the remnant of supernova SN 1054 observed by astronomers in 1054 AD. At its center lies the Crab Pulsar (PSR B0531+21), a rapidly spinning neutron star rotating 30 times per second whose relativistic magnetized wind energizes the filamentary synchrotron nebula.",
+    "cameraDistance": 550,
+    "cameraOffset": [70.0, 80.0, 280.0],
+    "scientificDetails": {
+      "pulsarPeriodMs": 33.085,
+      "pulsarMagneticFieldGauss": 3.8e12,
+      "expansionVelocityKmS": 1500,
+      "radiationType": "Relativistic Synchrotron & Ionized Filament Lines"
+    }
+  },
+  {
+    "id": "trapezium",
+    "name": "Trapezium Cluster",
+    "commonName": "Theta-1 Orionis C",
+    "constellation": "Orion",
+    "category": "open_cluster",
+    "equatorial": {
+      "ra": "05h 35m 16.5s",
+      "dec": "-05° 23' 23\"",
+      "raDeg": 83.8186,
+      "decDeg": -5.3897,
+      "distanceLy": 1344
+    },
+    "galactic": {
+      "lDeg": 209.01,
+      "bDeg": -19.38,
+      "distanceLy": 1344
+    },
+    "cartesian": {
+      "x": 614.9,
+      "y": -377.9,
+      "z": 27108.7
+    },
+    "threePosition": [614.9, -377.9, 27108.7],
+    "distanceFromGC": 27118,
+    "distanceFromSun": 1344,
+    "spectralType": "O7Vp",
+    "temperatureK": 39000,
+    "apparentMagnitude": 5.13,
+    "absoluteMagnitude": -3.2,
+    "description": "The Trapezium Cluster is a dense, young open cluster at the core of the Orion Nebula. Its brightest star, Theta-1 Orionis C, is an extreme O-type main-sequence star emitting immense ultraviolet flux that powers the ionization of Messier 42.",
+    "cameraDistance": 200,
+    "cameraOffset": [25.0, 30.0, 90.0],
+    "scientificDetails": {
+      "spectralClassification": "O7Vp",
+      "massSolarMasses": 33,
+      "luminositySolar": 204000
+    }
+  },
+  {
+    "id": "betelgeuse",
+    "name": "Betelgeuse",
+    "commonName": "Alpha Orionis",
+    "constellation": "Orion",
+    "category": "stellar_system",
+    "equatorial": {
+      "ra": "05h 55m 10.3s",
+      "dec": "+07° 24' 25\"",
+      "raDeg": 88.7929,
+      "decDeg": 7.4071,
+      "distanceLy": 548
+    },
+    "galactic": {
+      "lDeg": 199.79,
+      "bDeg": -8.96,
+      "distanceLy": 548
+    },
+    "cartesian": {
+      "x": 183.3,
+      "y": -17.3,
+      "z": 26509.4
+    },
+    "threePosition": [183.3, -17.3, 26509.4],
+    "distanceFromGC": 26510,
+    "distanceFromSun": 548,
+    "spectralType": "M1-2Ia-ab",
+    "temperatureK": 3600,
+    "apparentMagnitude": 0.50,
+    "absoluteMagnitude": -5.85,
+    "description": "Betelgeuse is a red supergiant star in the constellation Orion, with a radius hundreds of times greater than the Sun. It is in the late stages of stellar evolution and is expected to explode as a Type II supernova within the next 100,000 years.",
+    "cameraDistance": 180,
+    "cameraOffset": [20.0, 30.0, 100.0],
+    "scientificDetails": {
+      "radiusSolarRadii": 764,
+      "luminositySolar": 126000,
+      "variabilityType": "Semiregular pulsating supergiant"
+    }
+  },
+  {
+    "id": "sirius",
+    "name": "Sirius",
+    "commonName": "Alpha Canis Majoris / Dog Star",
+    "constellation": "Canis Major",
+    "category": "star_system",
+    "equatorial": {
+      "ra": "06h 45m 08.9s",
+      "dec": "-16° 42' 58\"",
+      "raDeg": 101.2872,
+      "decDeg": -16.7161,
+      "distanceLy": 8.6
+    },
+    "galactic": {
+      "lDeg": 227.23,
+      "bDeg": -8.89,
+      "distanceLy": 8.6
+    },
+    "cartesian": {
+      "x": 6.3,
+      "y": 66.7,
+      "z": 26005.8
+    },
+    "threePosition": [6.3, 66.7, 26005.8],
+    "distanceFromGC": 26006,
+    "distanceFromSun": 8.6,
+    "spectralType": "A1V+DA2",
+    "temperatureK": 9940,
+    "apparentMagnitude": -1.46,
+    "absoluteMagnitude": 1.42,
+    "description": "Sirius is the brightest star in the night sky, located in Canis Major. It is a binary star system consisting of a main-sequence A-type star (Sirius A) and a faint white dwarf companion (Sirius B), located just 8.6 light-years from the Solar System.",
+    "cameraDistance": 80,
+    "cameraOffset": [10.0, 15.0, 45.0],
+    "scientificDetails": {
+      "parallaxMas": 379.21,
+      "primaryMassSolar": 2.06,
+      "companionType": "DA2 White Dwarf (Sirius B)"
+    }
+  },
+  {
+    "id": "vega",
+    "name": "Vega",
+    "commonName": "Alpha Lyrae",
+    "constellation": "Lyra",
+    "category": "star_system",
+    "equatorial": {
+      "ra": "18h 36m 56.3s",
+      "dec": "+38° 47' 01\"",
+      "raDeg": 279.2347,
+      "decDeg": 38.7837,
+      "distanceLy": 25.0
+    },
+    "galactic": {
+      "lDeg": 67.45,
+      "bDeg": 19.24,
+      "distanceLy": 25.0
+    },
+    "cartesian": {
+      "x": -21.8,
+      "y": 76.2,
+      "z": 25990.9
+    },
+    "threePosition": [-21.8, 76.2, 25990.9],
+    "distanceFromGC": 25991,
+    "distanceFromSun": 25.0,
+    "spectralType": "A0V",
+    "temperatureK": 9600,
+    "apparentMagnitude": 0.03,
+    "absoluteMagnitude": 0.58,
+    "description": "Vega is the brightest star in the northern constellation Lyra and the historical zero-point baseline for the UBV photometric magnitude system. It is a rapidly rotating A-type star surrounded by a circumstellar debris disk.",
+    "cameraDistance": 100,
+    "cameraOffset": [15.0, 20.0, 55.0],
+    "scientificDetails": {
+      "parallaxMas": 130.23,
+      "rotationalVelocityKmS": 236,
+      "debrisDisk": "Detected in infrared by IRAS (1983)"
+    }
+  },
+  {
+    "id": "alpha-centauri",
+    "name": "Alpha Centauri",
+    "commonName": "Rigil Kentaurus / Toliman",
+    "constellation": "Centaurus",
+    "category": "star_system",
+    "equatorial": {
+      "ra": "14h 39m 36.5s",
+      "dec": "-60° 50' 02\"",
+      "raDeg": 219.9021,
+      "decDeg": -60.8340,
+      "distanceLy": 4.37
+    },
+    "galactic": {
+      "lDeg": 315.78,
+      "bDeg": -0.71,
+      "distanceLy": 4.37
+    },
+    "cartesian": {
+      "x": 3.0,
+      "y": 67.9,
+      "z": 25996.9
+    },
+    "threePosition": [3.0, 67.9, 25996.9],
+    "distanceFromGC": 25997,
+    "distanceFromSun": 4.37,
+    "spectralType": "G2V+K1V",
+    "temperatureK": 5790,
+    "apparentMagnitude": -0.27,
+    "absoluteMagnitude": 4.07,
+    "description": "Alpha Centauri is the closest star system to the Solar System at 4.37 light-years. It is a triple star system containing Alpha Centauri A (G2V), Alpha Centauri B (K1V), and the red dwarf Proxima Centauri (M5.5Ve) which hosts terrestrial exoplanets.",
+    "cameraDistance": 70,
+    "cameraOffset": [8.0, 12.0, 40.0],
+    "scientificDetails": {
+      "parallaxMas": 747.1,
+      "proximaDistanceLy": 4.24,
+      "exoplanet": "Proxima Centauri b (Habitable Zone terrestrial)"
+    }
+  }
+]
